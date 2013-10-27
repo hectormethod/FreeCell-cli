@@ -3,32 +3,32 @@ import java.util.*;
 
 public class CardCollect extends Stack <Card> {
 	
-	private Stack<Card> cardcollect = new Stack<Card>();
+	//private Stack<Card> cardcollect = new Stack<Card>();
 
 	public CardCollect(){
 	
 	}
 	
 	public void pushCard(Card card){
-		cardcollect.push(card);
+		push(card);
 	}
 	
 	public Card popTopCard(){
-		if (cardcollect.isEmpty()) { 
+		if (isEmpty()) { 
 			return null;
 			}
-		else return cardcollect.pop();  //pop off the top card of the column
+		else return pop();  //pop off the top card of the column
 	}
 	
 	public Card peekTopCard(){
-		if (cardcollect.isEmpty()){
+		if (isEmpty()){
 		return null;
 		}
-		return cardcollect.peek();
+		return peek();
 	}
 	
 	public boolean canPlayFrom(){ //return TRUE if not empty?
-		if (cardcollect.isEmpty()){
+		if (isEmpty()){
 			System.out.println("COLLECT SAYS: empty");
 			return false;
 		}
@@ -48,21 +48,19 @@ public class CardCollect extends Stack <Card> {
 		return true;
 	}
 	
-	public Stack<Card> getCards(){
-		return cardcollect;
-	}
+
 	
 	public int size(){
-		return cardcollect.size();
+		return size();
 	}
 	
 	@Override public String toString(){
-		return cardcollect.toString();
+		return toString();
 	}
 	
 	public Card[] toArray(){
-		Card[] arr = (Card[]) cardcollect.toArray();
-		return arr;   //TODO FIX
+		
+		return toArray();   //TODO FIX
 	}
 	
 	public static void main(String[] args) {
