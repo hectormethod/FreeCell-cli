@@ -26,9 +26,12 @@ public class FreeCellPlay {
               System.out.println("Q U I T  G A M E" );
           	  break;
           	}
+            
             destination = Integer.parseInt(moves[1]);
              System.out.println("Source is:" + source + "\nDesintation is:" + destination);
-             //if(board.isMoveLegal(source, destination)){}
+             if(! board.isMoveLegal(source, destination)){
+            	 System.out.println("Ilegal move. Please try again");
+            	 break;}
              board = new GameBoard(source, destination, board);
 		} while (source != 0);
 	}

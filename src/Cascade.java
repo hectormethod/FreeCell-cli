@@ -41,13 +41,13 @@ public String toString (){
 	 */
 	
 	public boolean playTo(Card card){
-		if(cascade.isEmpty()){
+		if(super.isEmpty()){
 			return true;
 		} //rank is one higher and card is red, cascade top card is not red.
-		else if((card.rank + 1) == cascade.peek().rank && card.isRed() == !cascade.peek().isRed()){
+		else if((card.rank + 1) == super.peek().rank && card.isRed() == !super.peek().isRed()){
 			return true;
 		} //rank is one higher and card is black, cascade top card is not black.
-		else if((card.rank + 1) == cascade.peek().rank && !card.isRed() == cascade.peek().isRed()){
+		else if((card.rank + 1) == super.peek().rank && !card.isRed() == super.peek().isRed()){
 			return true;
 		}
 		return false;

@@ -75,7 +75,7 @@ public class GameBoard {
 	public boolean isMoveLegal (int source, int destination){
 		//CardCollect s = this.board.get(source);
 		//CardCollect d = this.board.get(destination);
-		if(board.get(source).playFrom() && board.get(destination).playTo(board.get(source))){
+		if(board.get(source).playFrom() && board.get(destination).playTo(board.get(source).peekTopCard())){
 			return true;
 			}
 		return false;
