@@ -48,7 +48,6 @@ public class CardCollect extends Stack <Card> {
 		return true;
 	}
 	
-
 	
 //	public int size(){
 //		return size();
@@ -59,7 +58,6 @@ public class CardCollect extends Stack <Card> {
 //	}
 	
 	public Card[] toArray(){
-		
 		return toArray();   
 	}
 	
