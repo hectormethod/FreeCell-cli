@@ -28,15 +28,16 @@ public class GameBoard {
 	//constructor for new Gameboard
 	public GameBoard(){ //make new GameBoard
 		this.board = new ArrayList<CardCollect>();
-		for(int i = 0; i < 4; i++ ){ //add foundations
-			Foundation foundation = new Foundation();
-			board.add(foundation);
-			}
-		for(int i = 0; i < 4; i++ ){ //add cells
+		for(int i = 0; i < 4; i++ ){ //add cells in 0-3
 			Cell cell = new Cell();
 			board.add(cell);
 			}
-		for(int i = 0; i < 8; i++ ){ //add cascades
+		for(int i = 0; i < 4; i++ ){ //add foundations in 4-7
+			Foundation foundation = new Foundation();
+			board.add(foundation);
+			}
+		
+		for(int i = 0; i < 8; i++ ){ //add cascades in 8-15
 			Cascade cascade = new Cascade();
 			board.add(cascade);
 			}
@@ -56,8 +57,8 @@ public class GameBoard {
 		}
 	
 	//constructor for creating a board from given board and given moves
-	public GameBoard (int source, int destination, GameBoard gbold){
-		this.board = gbold.board;
+	public GameBoard (int source, int destination, GameBoard gboard){
+		this.board = gboard.board;
 		Card card = new Card(0,0);
 		card = this.board.get(source).popTopCard();
 		this.board.get(destination).pushCard(card);
@@ -72,13 +73,14 @@ public class GameBoard {
 	}
 	
 	public boolean isMoveLegal (int source, int destination){
-		CardCollect s = this.board.get(source);
-		CardCollect d = this.board.get(destination);
-		if(s.canPlayFrom() && d.playTo(d)){return true;}
-		
-				return false;
-		
+		//CardCollect s = this.board.get(source);
+		//CardCollect d = this.board.get(destination);
+		if(board.get(source).playFrom() && board.get(destination).playTo(board.get(source))){
+			return true;
+			}
+		return false;
 		}
+	
 	public String toString(){
 	StringBuilder sb = new StringBuilder();
 	for (int i = 0; i < board.size(); i++) {
@@ -95,13 +97,15 @@ public class GameBoard {
 	public static void main(String[] args) {
 		GameBoard b = new GameBoard();
 		
-		System.out.println(b.toString());
-		//b.moveCard(10, 3);
-		//System.out.println(b.toString());
-		if(b.isMoveLegal(3, 2)){
+		System.out.println(b);
+		b.moveCard(10, 3);
+		System.out.println(b);
+		if(b.isMoveLegal(11, 3)){
 			System.out.println("should be true");
+			b.moveCard(11, 3);
+			System.out.println(b);
 		}
-		System.out.println(b.isMoveLegal(3,8));
+		System.out.println(b.isMoveLegal(11,3));
 	}
 	
 

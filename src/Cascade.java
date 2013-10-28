@@ -3,10 +3,10 @@ import java.util.Stack;
 
 public class Cascade extends CardCollect  {
 
-	private CardCollect cascade  = new CardCollect();;
+	private CardCollect cascade;
 	
 	public Cascade() {
-		
+		this.cascade = new CardCollect();
 	}
 	
 	//constructor to create new Cascade with given card on top
@@ -17,20 +17,20 @@ public class Cascade extends CardCollect  {
 	}
 
 	
-public CardCollect getCascade() {
-		return cascade;
-	}
-
-	public void setCascade(CardCollect cascade) {
-		this.cascade = cascade;
-	}
+//public CardCollect getCascade() {
+//		return cascade;
+//	}
+//
+//	public void setCascade(CardCollect cascade) {
+//		this.cascade = cascade;
+//	}
 
 public String toString (){
 		StringBuilder result = new StringBuilder();
-			result.append("CASCADE: ");
-			for (int i = 0; i < getCascade().size(); i++) {
-				result.append( getCascade().elementAt(i));
-				result.append(" ");
+			//result.append("CASCADE: ");
+			for (int i = 0; i < super.size(); i++) {
+				result.append( super.elementAt(i));
+				result.append("  ");
 			}
 		return result.toString();
 	}

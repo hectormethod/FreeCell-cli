@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+
+import java.util.Random;
 
 
 public class Card
@@ -17,9 +18,11 @@ public class Card
 	}
 
 	public Card getRandomCard(){
-		Card card = new Card(StdRandom.uniform(12),StdRandom.uniform(3));
+		Random random = new Random();
+		Card card = new Card(random.nextInt(12),random.nextInt(3));
 		return card;
 	}
+	
 	public String toString()
 	{
 		  return rankLabel[rank] + suitLabel[suit];

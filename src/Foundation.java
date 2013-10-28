@@ -7,15 +7,15 @@ public class Foundation extends CardCollect {
 	}
 	
 	/*cannot play from Foundations.*/
-	public boolean canPlayFrom(){
+	public boolean playFrom(){
 		return false;
 	}
 	
 	public boolean playTo(Card card){
 		/*Case1: foundation is empty and card rank is Ace OR
 		 *Case2: foundation is not empty and card played is same suit as top card and rank is +1 of top card*/
-		if ((foundation.isEmpty() && card.rank == 0) || 
-		(!foundation.isEmpty() && foundation.peek().suit == card.suit && (foundation.peek().rank + 1) == card.rank)){
+		if ((super.isEmpty() && card.rank == 0) || 
+		(!super.isEmpty() && super.peek().suit == card.suit && (super.peek().rank + 1) == card.rank)){
 			return true;
 		}
 		return false; 

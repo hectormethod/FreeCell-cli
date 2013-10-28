@@ -27,7 +27,7 @@ public class CardCollect extends Stack <Card> {
 		return peek();
 	}
 	
-	public boolean canPlayFrom(){ //return TRUE if not empty?
+	public boolean playFrom(){ //return TRUE if not empty?
 		if (isEmpty()){
 			System.out.println("COLLECT SAYS: empty");
 			return false;
@@ -50,17 +50,17 @@ public class CardCollect extends Stack <Card> {
 	
 
 	
-	public int size(){
-		return size();
-	}
+//	public int size(){
+//		return size();
+//	}
 	
-	@Override public String toString(){
-		return toString();
-	}
+//	@Override public String toString(){
+//		return toString();
+//	}
 	
 	public Card[] toArray(){
 		
-		return toArray();   //TODO FIX
+		return toArray();   
 	}
 	
 	public static void main(String[] args) {
@@ -69,7 +69,7 @@ public class CardCollect extends Stack <Card> {
 		CardCollect cc = new CardCollect();
 		cc.pushCard(card);
 		System.out.println(cc.peekTopCard()); //print top card.
-		System.out.println(cc.canPlayFrom());
+		System.out.println(cc.playFrom());
 		System.out.println("Is the card red? " + cc.peekTopCard().isRed());
 		
 	}
