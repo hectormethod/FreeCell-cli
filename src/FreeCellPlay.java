@@ -8,10 +8,8 @@ public class FreeCellPlay {
 
 	}
 	
-
-
-	public static void main(String[] args) {
-		GameBoard board = new GameBoard();
+	public static boolean playGame(GameBoard board){
+		boolean play = true;
 		String str;
 		Scanner line = new Scanner(System.in);
 		int source, destination;
@@ -30,10 +28,19 @@ public class FreeCellPlay {
             destination = Integer.parseInt(moves[1]);
              System.out.println("Source is:" + source + "\nDesintation is:" + destination);
              if(! board.isMoveLegal(source, destination)){
-            	 System.out.println("Ilegal move. Please try again");
-            	 break;}
+            	 System.out.println("\n*** ILLEGAL MOVE. Please try again***\n");
+            	 return play;}
              board = new GameBoard(source, destination, board);
 		} while (source != 0);
+		play = false;
+		return play;
+	}
+
+	public static void main(String[] args) {
+		GameBoard board = new GameBoard();
+		while(playGame(board)){
+			playGame(board);
+		} System.exit(0);
 	}
 
 }
