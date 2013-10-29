@@ -50,7 +50,7 @@ public String toString (){
 		else if((card.rank + 1) == super.peek().rank && !card.isRed() == super.peek().isRed()){
 			return true;
 		}
-		return false;
+			return false;
 	}
 
 	
