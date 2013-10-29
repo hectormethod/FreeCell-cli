@@ -93,10 +93,8 @@ public class FreeCellPlay {
 
 	public static void main(String[] args) {
 		if(args.length > 0){
-			//String filename = "../moves.txt";
 	        String filename = args[0].toString();
-	        
-			try {
+	       	try { //play with filename given as CL argument
 				Scanner filescanner = new Scanner (new File(filename));
 		        ArrayList<Integer> moves = new ArrayList<Integer>();
 		        while(filescanner.hasNext()){
