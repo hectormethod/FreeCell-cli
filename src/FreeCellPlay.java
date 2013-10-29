@@ -71,5 +71,4 @@ public class FreeCellPlay {
 			playGame(board);
 		} System.exit(0);
 	}
-
 }
