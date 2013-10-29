@@ -16,14 +16,6 @@ public class Cascade extends CardCollect  {
 		
 	}
 
-	
-//public CardCollect getCascade() {
-//		return cascade;
-//	}
-//
-//	public void setCascade(CardCollect cascade) {
-//		this.cascade = cascade;
-//	}
 
 public String toString (){
 		StringBuilder result = new StringBuilder();
