@@ -4,14 +4,15 @@
 import java.util.*;
 
 /*Structure of Board:
- *	found0 = new Foundation(); //1-4 are foundations
-* found1
-*	found2
-*	found3
-*	cell4  -- 5-8 are cells
-*	cell5 
-*	cell6 
-*	cell7 
+ * 	cell0  -- 0-3 are cells
+*	cell1 
+*	cell2 
+*	cell3 
+ *	found4 //4-7 are foundations
+* 	found5
+*	found6
+*	found7
+*	
 *	casc8 -- 8-11 are 6 count 
 *	casc9
 *	casc10
