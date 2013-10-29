@@ -19,7 +19,7 @@ public class Cascade extends CardCollect  {
 
 public String toString (){
 		StringBuilder result = new StringBuilder();
-			//result.append("CASCADE: ");
+			result.append("Cascade: ");
 			for (int i = 0; i < super.size(); i++) {
 				result.append( super.elementAt(i));
 				result.append("  ");

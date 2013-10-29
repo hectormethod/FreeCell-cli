@@ -1,9 +1,7 @@
 
 public class Cell extends CardCollect {
-	//private CardCollect cell;
 	
 	public Cell(){
-		//this.cell = new CardCollect();
 	}
 	
 	/*can only play on empty cell*/
@@ -20,7 +18,16 @@ public class Cell extends CardCollect {
 		}
 		return true;
 	}
-
+	public String toString(){
+		StringBuilder result = new StringBuilder();
+		result.append("CELL: ");
+		for (int i = 0; i < super.size(); i++) {
+			result.append( super.elementAt(i));
+			result.append("  ");
+		}
+	return result.toString();
+	}
+	
 	public boolean playFrom(){
 		if (!super.isEmpty()){ //has 1 card, can play is true
 			return true;

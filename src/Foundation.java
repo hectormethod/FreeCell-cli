@@ -11,11 +11,23 @@ public class Foundation extends CardCollect {
 		return false;
 	}
 	
+	public String toString (){
+		StringBuilder result = new StringBuilder();
+			result.append("Foundation: ");
+			for (int i = 0; i < super.size(); i++) {
+				result.append( super.elementAt(i));
+				result.append("  ");
+			}
+		return result.toString();
+	}
+	
 	public boolean playTo(Card card){
 		/*Case1: foundation is empty and card rank is Ace OR
 		 *Case2: foundation is not empty and card played is same suit as top card and rank is +1 of top card*/
 		if ((super.isEmpty() && card.rank == 0) ||
-		(!super.isEmpty() && super.peek().suit == card.suit && (super.peek().rank + 1) == card.rank)){
+				(!super.isEmpty() && 
+				super.peek().suit == card.suit && 
+				(super.peek().rank + 1) == card.rank)){
 			return true;
 		}
 		return false; 

@@ -85,9 +85,9 @@ public class GameBoard {
 	public String toString(){
 	StringBuilder sb = new StringBuilder();
 	for (int i = 0; i < board.size(); i++) {
-		if(i < 4){sb.append("Cell " + i + ": " );}
-		if(i >= 4 && i < 8) {sb.append("Foundation " + i + ": ");}
-		if(i >= 8 && i < 16) {sb.append("Cascade " + i + ": ");}
+		if(i < 4){sb.append(i + " " );}
+		if(i >= 4 && i < 8) {sb.append(i + " ");}
+		if(i >= 8 && i < 16) {sb.append(i + " ");}
 		sb.append(board.get(i).toString());
 		sb.append("\n");
 		}
