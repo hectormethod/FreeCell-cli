@@ -93,9 +93,9 @@ public class FreeCellPlay {
 	}
 
 	public static void main(String[] args) {
-		//if(args.length > 0){
-			String filename = "moves.txt";
-	        //String filename = args[0].toString();
+		if(args.length > 0){
+			//String filename = "../moves.txt";
+	        String filename = args[0].toString();
 	        
 			try {
 				Scanner filescanner = new Scanner (new File(filename));
@@ -106,15 +106,15 @@ public class FreeCellPlay {
 		        GameBoard board = new GameBoard();
 		        playGameByFile(board, moves);
 		        filescanner.close();
-		    
 		    } catch (FileNotFoundException e) {
 		        System.err.println("Argument " + filename + " is not a filename");
 		        System.exit(0);
+		   }
+		} else { //no filename given, play by console
+		GameBoard board = new GameBoard();
+		while(playGame(board)){
+			playGame(board);
+			} System.exit(0);
 		}
-//		GameBoard board = new GameBoard();
-//		while(playGame(board)){
-//			playGame(board);
-//			} System.exit(0);
-//		}
 	}
 }
