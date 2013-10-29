@@ -21,7 +21,6 @@ public class FreeCellPlay {
 	
 	public static boolean playGameByFile(GameBoard board, ArrayList<Integer> moves){
 		boolean play = true;
-		//Scanner line = new Scanner(System.in);
 		int source, destination;
 		//Scanner parse = new Scanner(input);
 			try{
