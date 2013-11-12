@@ -8,11 +8,10 @@ import java.util.*;
 *	cell1 
 *	cell2 
 *	cell3 
- *	found4 //4-7 are foundations
+ *	found4 -- 4-7 are foundations
 * 	found5
 *	found6
 *	found7
-*	
 *	casc8 -- 8-11 are 6 count 
 *	casc9
 *	casc10
@@ -65,6 +64,39 @@ public class GameBoard {
 		this.board.get(destination).pushCard(card);
 	}
 	
+	//constructor for creating a board with a certain deck (for debugging mostly)
+	public GameBoard (Deck testdeck){
+		this.board = new ArrayList<CardCollect>();
+		for(int i = 0; i < 4; i++ ){ //add cells in 0-3
+			Cell cell = new Cell();
+			board.add(cell);
+			}
+		for(int i = 0; i < 4; i++ ){ //add foundations in 4-7
+			Foundation foundation = new Foundation();
+			board.add(foundation);
+			}
+		
+		for(int i = 0; i < 8; i++ ){ //add cascades in 8-15
+			Cascade cascade = new Cascade();
+			board.add(cascade);
+			}
+		
+		//insert cards from test Deck into test board
+		for (int i = 0; i < 11; i++) { //insert 50 cards in foundation 4-7
+			int k =0;
+			for (int j = 4; j <= 7; j++) {
+					board.get(j).pushCard(testdeck.drawFromDeck(k));
+					k++;
+					}
+				}
+	
+//		for (int i = 0; i < 7; i++) { //insert 7 cards in cascades 12-15
+//			for (int j = 12; j <= 15; j++) {
+//					board.get(j).pushCard(deck.drawFromDeck());
+//				}
+//			}
+	}
+	
 	public CardCollect getColumn(int i){
 		return this.board.get(i);
 	}
@@ -96,17 +128,18 @@ public class GameBoard {
 	}
 	
 	public static void main(String[] args) {
-		GameBoard b = new GameBoard();
+		Deck testdeck = new Deck();
+		GameBoard b = new GameBoard(testdeck);
 		
 		System.out.println(b);
-		b.moveCard(10, 3);
-		System.out.println(b);
-		if(b.isMoveLegal(11, 3)){
-			System.out.println("should be true");
-			b.moveCard(11, 3);
-			System.out.println(b);
-		}
-		System.out.println(b.isMoveLegal(11,3));
+//		b.moveCard(10, 3);
+//		System.out.println(b);
+//		if(b.isMoveLegal(11, 3)){
+//			System.out.println("should be true");
+//			b.moveCard(11, 3);
+//			System.out.println(b);
+//		}
+//		System.out.println(b.isMoveLegal(11,3));
 	}
 	
 

@@ -17,12 +17,17 @@ public class Deck {
 			 }
 		}
 	}
+	
 
 	public Card drawFromDeck()
 	{
 		Random random = new Random();
 		int index= random.nextInt(cards.size());
 		return cards.remove(index);
+	}
+	
+	public Card drawFromDeck(int i){
+		return cards.get(i);
 	}
 
 	 public int getTotalCards()
@@ -37,11 +42,13 @@ public class Deck {
 		Card C;
 
 		System.out.println( deck.getTotalCards() + " total cards" );
-
-	   while (deck.getTotalCards()!= 0 )
-	   {
-		   C = deck.drawFromDeck();
-		   System.out.println( C.toString() );
-	   }
+	  for (int i = 0; i < deck.getTotalCards(); i++) {
+		  System.out.println( deck.drawFromDeck(i).toString() );
+	}
+//	   while (deck.getTotalCards()!= 0 )
+//	   {
+//		   C = deck.drawFromDeck();
+//		   System.out.println( C.toString() );
+//	   }
 	}
 	}
