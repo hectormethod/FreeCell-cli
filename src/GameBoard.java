@@ -82,8 +82,9 @@ public class GameBoard {
 			}
 		
 		//insert cards from test Deck into test board
-		for (int i = 0; i < 11; i++) { //insert 50 cards in foundation 4-7
-			int k =0;
+		int k =0;
+		for (int i = 0; i < 13; i++) { //insert 50 cards in foundation 4-7
+			
 			for (int j = 4; j <= 7; j++) {
 					board.get(j).pushCard(testdeck.drawFromDeck(k));
 					k++;

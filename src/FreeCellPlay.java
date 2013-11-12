@@ -108,7 +108,10 @@ public class FreeCellPlay {
 		        System.exit(0);
 		   }
 		} else { //no filename given, play by console
-		GameBoard board = new GameBoard();
+		//DEBUG -- use test board
+		Deck testdeck = new Deck();
+		GameBoard board = new GameBoard(testdeck); //use for debugging
+		//GameBoard board = new GameBoard(); //use for real game
 		while(playGame(board)){
 			playGame(board);
 			} System.exit(0);
