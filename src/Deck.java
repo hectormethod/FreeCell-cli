@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class Deck {
 	private ArrayList<Card> cards;
 	
-	 Deck() //create new deck by iterating over rank, then suit)
+
+	public Deck() //create new deck by iterating over rank, then suit)
 	{
 		cards = new ArrayList<Card>();
 		for (int rank=0; rank<=12; rank++)

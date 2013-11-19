@@ -81,21 +81,21 @@ public class GameBoard {
 			board.add(cascade);
 			}
 		
-		//insert cards from test Deck into test board
+		//insert cards from test Deck into foundations up through Queen rank
 		int k =0;
-		for (int i = 0; i < 13; i++) { //insert 50 cards in foundation 4-7
+		for (int i = 0; i < 12; i++) { //insert 50 cards in foundation 4-7
 			
 			for (int j = 4; j <= 7; j++) {
 					board.get(j).pushCard(testdeck.drawFromDeck(k));
 					k++;
 					}
 				}
+		//insert remaining King rank onto Cascades 8-12
+		for (int m = 8; m < 12; m++){
+			board.get(m).pushCard(testdeck.drawFromDeck(k));
+			k++;
+		}
 	
-//		for (int i = 0; i < 7; i++) { //insert 7 cards in cascades 12-15
-//			for (int j = 12; j <= 15; j++) {
-//					board.get(j).pushCard(deck.drawFromDeck());
-//				}
-//			}
 	}
 	
 	public CardCollect getColumn(int i){
