@@ -11,7 +11,7 @@ public class Card
 	public static String[] rankLabel = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
 
 
-	public Card(int rank, int suit) // TODO configure to switch rank, suit - need to change Deck loop
+	public Card(int rank, int suit)
 	{
 		this.suit = suit;
 		this.rank = rank;

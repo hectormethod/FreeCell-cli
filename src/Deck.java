@@ -3,37 +3,43 @@ import java.util.Random;
 import java.util.ArrayList;
 
 public class Deck {
-	private ArrayList<Card> cards;
+	private ArrayList<Card> deckcards;
 	
 
 	public Deck() //create new deck by iterating over rank, then suit)
 	{
-		cards = new ArrayList<Card>();
+		deckcards = new ArrayList<Card>();
 		for (int rank=0; rank<=12; rank++)
 		{
 			for (int suit=0; suit<=3; suit++)
 			 {
 			   Card c = new Card(rank,suit);
-			   cards.add( c );
+			   deckcards.add( c );
 			 }
 		}
+	}
+	
+	//constructor to create a custom deck arrangement using given array of cards
+	public Deck(ArrayList <Card> customdeck){
+		
+		this.deckcards = customdeck;
 	}
 	
 
 	public Card drawFromDeck()
 	{
 		Random random = new Random();
-		int index= random.nextInt(cards.size());
-		return cards.remove(index);
+		int index= random.nextInt(deckcards.size());
+		return deckcards.remove(index);
 	}
 	
 	public Card drawFromDeck(int i){
-		return cards.get(i);
+		return deckcards.get(i);
 	}
 
 	 public int getTotalCards()
 	{
-		return cards.size();
+		return deckcards.size();
 	}
 
 

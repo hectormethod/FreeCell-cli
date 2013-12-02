@@ -98,6 +98,11 @@ public class GameBoard {
 	
 	}
 	
+	//constructor to create GameBoard from given ArrayList of cards
+	public GameBoard (ArrayList<CardCollect> a){
+		this.board = a;
+	}
+	
 	public CardCollect getColumn(int i){
 		return this.board.get(i);
 	}
