@@ -130,6 +130,16 @@ public class GameBoard {
 		return false;
 		}
 	
+	public boolean isBoardWon(GameBoard b){
+		boolean test = true;
+		for (int i = 8; i <= 15; i++){       //are cascades 8-15 empty? game over
+			if(! b.getColumn(i).isEmpty()){
+				test =  false;
+			}
+		}
+		return test;
+	}
+	
 	public String toString(){
 	StringBuilder sb = new StringBuilder();
 	for (int i = 0; i < board.size(); i++) {
