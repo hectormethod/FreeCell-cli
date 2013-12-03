@@ -42,6 +42,7 @@ public class Solver {
 			}
 	
 	public static void bruteForceSolve(GameBoard b){
+		
 		System.out.println(b);
 		int source=0;
 		int dest=0;
