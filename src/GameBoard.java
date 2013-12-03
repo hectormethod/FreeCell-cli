@@ -12,11 +12,11 @@ import java.util.*;
 * 	found5
 *	found6
 *	found7
-*	casc8 -- 8-11 are 6 count 
+*	casc8 -- 8-11 are 6 count cascades
 *	casc9
 *	casc10
 *	casc11
-*	casc12 -- 12-15 are 7 count 
+*	casc12 -- 12-15 are 7 count cascades
 *	casc13
 *	casc14
 *	casc15
@@ -134,8 +134,11 @@ public class GameBoard {
 	}
 	
 	public static void main(String[] args) {
+		int[][] ranksuit = {{0,1,2,3,4,5,6,7,8,9,10,11,12},{0,1,2,3,4,5,6,7,8,9,10,11,12},
+				{0,1,2,3,4,5,6,7,8,9,10,11,12},{0,1,2,3,4,5,6,7,8,9,10,11,12}};
+		Deck ordered = new Deck(ranksuit);
 		Deck testdeck = new Deck();
-		GameBoard b = new GameBoard(testdeck);
+		GameBoard b = new GameBoard(ordered);
 		
 		System.out.println(b);
 //		b.moveCard(10, 3);

@@ -19,13 +19,19 @@ public class Deck {
 		}
 	}
 	
-	//constructor to create a custom deck arrangement using given array of cards
-	public Deck(ArrayList <Card> customdeck){
-		
+	//constructor to create a custom deck arrangement using given 2D array of cards
+	public Deck(int [][] ranksuit){
+		ArrayList<Card> customdeck = new ArrayList<Card>();
+		for (int i = 0; i < ranksuit[0].length; i++) {
+			for (int j = 0; j < ranksuit.length; j++) {
+				Card c = new Card (i,j);
+				customdeck.add(c);
+			}
+		}
 		this.deckcards = customdeck;
 	}
 	
-
+	
 	public Card drawFromDeck()
 	{
 		Random random = new Random();
@@ -45,11 +51,13 @@ public class Deck {
 
 	public static void main(String[] args)
 	{
-		Deck deck = new Deck();
-		Card C;
+		int[][] suitrank = {{0,1,2,3,4,5,6,7,8,9,10,11,12},{0,1,2,3,4,5,6,7,8,9,10,11,12},
+							{0,1,2,3,4,5,6,7,8,9,10,11,12},{0,1,2,3,4,5,6,7,8,9,10,11,12}};
+		Deck deck = new Deck(suitrank);
 
 		System.out.println( deck.getTotalCards() + " total cards" );
-	  for (int i = 0; i < deck.getTotalCards(); i++) {
+	  
+		for (int i = 0; i < deck.getTotalCards(); i++) {
 		  System.out.println( deck.drawFromDeck(i).toString() );
 	}
 //	   while (deck.getTotalCards()!= 0 )

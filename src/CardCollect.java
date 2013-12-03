@@ -3,7 +3,6 @@ import java.util.*;
 
 public class CardCollect extends Stack <Card> {
 	
-	//private Stack<Card> cardcollect = new Stack<Card>();
 
 	public CardCollect(){
 	
@@ -48,14 +47,6 @@ public class CardCollect extends Stack <Card> {
 		return true;
 	}
 	
-	
-//	public int size(){
-//		return size();
-//	}
-	
-//	@Override public String toString(){
-//		return toString();
-//	}
 	
 	public Card[] toArray(){
 		return toArray();   

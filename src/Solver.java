@@ -9,7 +9,7 @@ public class Solver {
 	}
 	
 	//constructor for creating a board with a certain deck (for debugging mostly)
-	public ArrayList<CardCollect> createTestBoard (Deck testdeck){
+	public static ArrayList<CardCollect> createTestBoard (Deck testdeck){
 		ArrayList <CardCollect> board = new ArrayList<CardCollect>();
 		for(int i = 0; i < 4; i++ ){ //add cells in 0-3
 			Cell cell = new Cell();
@@ -41,14 +41,26 @@ public class Solver {
 			return board;
 			}
 	
-	public void bruteForceSolve(GameBoard b){
-		b = createTestBoard();
-	
+	public static void bruteForceSolve(GameBoard board){
+		int source=0;
+		int dest=0;
+		for (source = 0; source < 16; source++) {  //try all 16 columns as destination
+			for(dest = 0; dest <16; dest++){ // try all 16 columns as source
+				if (source == dest) {continue;}   //don't test if source and destination are same;
+				if (board.isMoveLegal(source, dest)){
+					board = new GameBoard(source, dest, board);
+					System.out.println(board);
+					break;
+				}
+			}
+		}
 	}
 	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Deck deck = new Deck();
+		GameBoard board = new GameBoard(deck);
+		bruteForceSolve(board);
 
 	}
 
