@@ -41,20 +41,34 @@ public class Solver {
 			return board;
 			}
 	
-	public static void bruteForceSolve(GameBoard board){
+	public static void bruteForceSolve(GameBoard b){
+		System.out.println(b);
 		int source=0;
 		int dest=0;
-		for (source = 0; source < 16; source++) {  //try all 16 columns as destination
-			for(dest = 0; dest <16; dest++){ // try all 16 columns as source
-				if (source == dest) {continue;}   //don't test if source and destination are same;
-				if (board.isMoveLegal(source, dest)){
-					board = new GameBoard(source, dest, board);
-					System.out.println(board);
-					break;
+		//for (int k = 0; k < 1000; k++){ //brute force it a lot of times until Game Over
+			for (source = 0; source < 16; source++) {  //try all 16 columns as destination
+				for(dest = 0; dest <16; dest++){ // try all 16 columns as source
+					if (b.getColumn(source).isEmpty()){continue;}
+					if (source == dest) {continue;}   //don't test if source and destination are same;
+					if (b.isMoveLegal(source, dest)){
+						b = new GameBoard(source, dest, b);
+						System.out.println(b);
+						break;
+					} else {System.out.println(source + ", "+ dest + " is Invalid Move");}
+			}		
+			if(b.isGameOver()){
+				System.out.println("Game Over");
+				break;
 				}
 			}
 		}
+	//}
+	
+	public static GameBoard backTrackSolve(int source, int dest, GameBoard b){
+		return b;
 	}
+		
+	
 	
 	
 	public static void main(String[] args) {

@@ -111,6 +111,16 @@ public class GameBoard {
 		this.board.get(d).pushCard(this.board.get(s).popTopCard());
 	}
 	
+	public  boolean isGameOver(){
+		boolean test = false;
+		for (int i = 8; i <= 15; i++){       //are cascade full? T: game over
+			if(board.get(i).size() == 13){  
+				test = true;
+			}
+		}
+		return test;
+	}
+	
 	public boolean isMoveLegal (int source, int destination){
 		//CardCollect s = this.board.get(source);
 		//CardCollect d = this.board.get(destination);
