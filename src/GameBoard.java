@@ -12,11 +12,11 @@ import java.util.*;
 * 	found5
 *	found6
 *	found7
-*	casc8 -- 8-11 are 6 count 
+*	casc8 -- 8-11 are 6 count cascades
 *	casc9
 *	casc10
 *	casc11
-*	casc12 -- 12-15 are 7 count 
+*	casc12 -- 12-15 are 7 count cascades
 *	casc13
 *	casc14
 *	casc15
@@ -98,12 +98,27 @@ public class GameBoard {
 	
 	}
 	
+	//constructor to create GameBoard from given ArrayList of cards
+	public GameBoard (ArrayList<CardCollect> a){
+		this.board = a;
+	}
+	
 	public CardCollect getColumn(int i){
 		return this.board.get(i);
 	}
 	
 	public void moveCard(int s, int d){
 		this.board.get(d).pushCard(this.board.get(s).popTopCard());
+	}
+	
+	public  boolean isGameOver(){
+		boolean test = false;
+		for (int i = 8; i <= 15; i++){       //are cascade full? T: game over
+			if(board.get(i).size() == 13){  
+				test = true;
+			}
+		}
+		return test;
 	}
 	
 	public boolean isMoveLegal (int source, int destination){
@@ -139,8 +154,11 @@ public class GameBoard {
 	}
 	
 	public static void main(String[] args) {
+		int[][] ranksuit = {{0,1,2,3,4,5,6,7,8,9,10,11,12},{0,1,2,3,4,5,6,7,8,9,10,11,12},
+				{0,1,2,3,4,5,6,7,8,9,10,11,12},{0,1,2,3,4,5,6,7,8,9,10,11,12}};
+		Deck ordered = new Deck(ranksuit);
 		Deck testdeck = new Deck();
-		GameBoard b = new GameBoard(testdeck);
+		GameBoard b = new GameBoard(ordered);
 		
 		System.out.println(b);
 //		b.moveCard(10, 3);
