@@ -111,11 +111,21 @@ public class GameBoard {
 		this.board.get(d).pushCard(this.board.get(s).popTopCard());
 	}
 	
-	public  boolean isGameOver(){
-		boolean test = false;
-		for (int i = 8; i <= 15; i++){       //are cascade full? T: game over
-			if(board.get(i).size() == 13){  
-				test = true;
+	public boolean isCascadesEmpty(){
+		boolean test = true;
+		for (int i = 8; i < 16 ; i++) {
+			if(! board.get(i).isEmpty()){ //if  cascade is not empty, return false
+				test = false;
+			}
+		}
+		return test;
+	}
+	
+	public boolean isGameOver(){
+		boolean test = true;
+		for (int i = 4; i < 8; i++){       //are cascade full? T: game over
+			if(board.get(i).size() < 13){  
+				test = false;
 			}
 		}
 		return test;

@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.TreeMap;
-
 
 public class Solver {
 	
@@ -41,28 +39,31 @@ public class Solver {
 			return board;
 			}
 	
+	
 	public static void bruteForceSolve(GameBoard b){
 		System.out.println(b);
 		int source=0;
 		int dest=0;
-		//for (int k = 0; k < 1000; k++){ //brute force it a lot of times until Game Over
+		for (int k = 0; k < 1000; k++){ //brute force it a lot of times until Game Over
 			for (source = 0; source < 16; source++) {  //try all 16 columns as destination
 				for(dest = 0; dest <16; dest++){ // try all 16 columns as source
-					if (b.getColumn(source).isEmpty()){continue;}
+					if (b.getColumn(source).isEmpty() && ! b.isCascadesEmpty()){continue;}
 					if (source == dest) {continue;}   //don't test if source and destination are same;
 					if (b.isMoveLegal(source, dest)){
 						b = new GameBoard(source, dest, b);
 						System.out.println(b);
 						break;
 					} else {System.out.println(source + ", "+ dest + " is Invalid Move");}
-			}		
-			if(b.isGameOver()){
+			
+			}	
+				if(b.isGameOver()){
+				System.out.println(b);
 				System.out.println("Game Over");
 				break;
-				}
+				}	
 			}
 		}
-	//}
+	}
 	
 	public static GameBoard backTrackSolve(int source, int dest, GameBoard b){
 		return b;
