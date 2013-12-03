@@ -14,7 +14,7 @@ public class Solver {
 		return true;
 	}
 	
-<<<<<<< HEAD
+
 	public static void bruteForceSolve(GameBoard b){
 		
 		System.out.println(b);
@@ -35,7 +35,8 @@ public class Solver {
 				System.out.println("Game Over");
 				break;
 				}
-=======
+			}
+	}
 	
 	public boolean isSolution(GameBoard b){ //recursive solution
 		//GameBoard board = new GameBoard(source, destination, b);
@@ -51,7 +52,6 @@ public class Solver {
 			if (isSolution(b)){
 				System.out.println("Valid path found");
 				result=true;
->>>>>>> 8c4791985510a166290736a003a008ab4c3404fe
 			}
 			System.out.println("Invalid path removed");
 			path.remove(b);
