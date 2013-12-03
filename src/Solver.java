@@ -1,22 +1,47 @@
 import java.util.ArrayList;
-
+import java.util.TreeMap;
 
 
 public class Solver {
-	private ArrayList<GameBoard> path = new ArrayList<GameBoard>();
 	
 	public Solver(){
 		
 	}
 	
-	//** implement the brute force first!
-	public boolean isBruteSolution(GameBoard b){
-		return true;
-	}
-	
-
-	public static void bruteForceSolve(GameBoard b){
+	//constructor for creating a board with a certain deck (for debugging mostly)
+	public static ArrayList<CardCollect> createTestBoard (Deck testdeck){
+		ArrayList <CardCollect> board = new ArrayList<CardCollect>();
+		for(int i = 0; i < 4; i++ ){ //add cells in 0-3
+			Cell cell = new Cell();
+			board.add(cell);
+			}
+		for(int i = 0; i < 4; i++ ){ //add foundations in 4-7
+			Foundation foundation = new Foundation();
+			board.add(foundation);
+			}
 		
+		for(int i = 0; i < 8; i++ ){ //add cascades in 8-15
+			Cascade cascade = new Cascade();
+			board.add(cascade);
+			}
+		//insert cards from test Deck into foundations up through Queen rank
+				int k =0;
+				for (int i = 0; i < 12; i++) { //insert 50 cards in foundation 4-7
+					
+					for (int j = 4; j <= 7; j++) {
+							board.get(j).pushCard(testdeck.drawFromDeck(k));
+							k++;
+							}
+						}
+				//insert remaining King rank onto Cascades 8-12
+				for (int m = 8; m < 12; m++){
+					board.get(m).pushCard(testdeck.drawFromDeck(k));
+					k++;
+				}
+			return board;
+			}
+	
+	public static void bruteForceSolve(GameBoard b){
 		System.out.println(b);
 		int source=0;
 		int dest=0;
@@ -36,37 +61,19 @@ public class Solver {
 				break;
 				}
 			}
-	}
+		}
+	//}
 	
-	public boolean isSolution(GameBoard b){ //recursive solution
-		//GameBoard board = new GameBoard(source, destination, b);
-		path.add(b);
-		boolean result = false;
-		int i = 0;
-		if (b.isBoardWon(b)){ //base case true, found winning board.
-			result=true;
-		}
-		
-		while (i < 16) {
-			b = new GameBoard(i, i+1, b);
-			if (isSolution(b)){
-				System.out.println("Valid path found");
-				result=true;
-			}
-			System.out.println("Invalid path removed");
-			path.remove(b);
-			return result;
-		}
-
-		return result;
+	public static GameBoard backTrackSolve(int source, int dest, GameBoard b){
+		return b;
 	}
+		
 	
 	public static void main(String[] args) {
 		Deck deck = new Deck();
-		GameBoard b = new GameBoard(deck);
-		Solver solution = new Solver();
-		System.out.println(b);
-		System.out.println(solution.isSolution(b));
+		GameBoard board = new GameBoard(deck);
+		bruteForceSolve(board);
+
 	}
 
 }
