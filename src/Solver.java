@@ -47,9 +47,11 @@ public class Solver {
 		System.out.println(b);
 		int source=0;
 		int dest=0;
-		for (int k = 0; k < 500; k++){ //brute force it a lot of times until Game Over
+		int start = 4; //start at foundations
+		for (int k = 0; k < 1000; k++){ //brute force it a lot of times until Game Over
+			start = 4;
 			for (source = 0; source < 16; source++) {  //try all 16 columns as destination
-				for(dest = 0; dest <16; dest++){ // try all 16 columns as source
+				for(dest = start; dest <16; dest++){ // try all 16 columns as source
 					if (b.getColumn(source).isEmpty()){continue;} //don't try move if source is empty
 					if (source == dest) {continue;}   //don't try move if source and destination are same;
 					/*
@@ -65,19 +67,30 @@ public class Solver {
 							}
 						}
 					}
+					
+					if (b.isMoveLegal(source, dest) && source < 4 && b.isCascadesEmpty()){
+						for (int i = 4; i < 8; i++) {
+							if(b.isMoveLegal(source,i)){
+								b = new GameBoard(source, i, b);
+								if(VERBOSE){System.out.println(b);}
+							}
+						}
+					}
+					
 					if (b.isMoveLegal(source, dest)){
 						b = new GameBoard(source, dest, b);
-						if(VERBOSE){System.out.println(b);}
+						System.out.println(b);
 						break;
-					} else if(VERBOSE) {System.out.println(source + ", "+ dest + " is Invalid Move");}
-			
-			}	
+					} else {
+						if(VERBOSE) {System.out.println(source + ", "+ dest + " is Invalid Move");}
+						}
+				}start = 0; 		//start over and try cells now.	
 				if(b.isGameOver()){
 				System.out.println(b);
 				System.out.println("Game Over");
 				gameover = true;
 				break;
-				}	
+				}
 			}
 		if(gameover){
 			System.out.println("Thanks for playing.");
@@ -94,7 +107,7 @@ public class Solver {
 	
 	public static void main(String[] args) {
 		Deck deck = new Deck();
-		int attempts = 10000;
+		int attempts = 20;
 		GameBoard testboard = new GameBoard(deck); //test deck
 		VERBOSE=false;
 		for (int i = 0; i < attempts; i++) {
