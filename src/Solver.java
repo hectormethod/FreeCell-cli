@@ -45,14 +45,15 @@ public class Solver {
 		System.out.println(b);
 		int source=0;
 		int dest=0;
-		for (int k = 0; k < 1000; k++){ //brute force it a lot of times until Game Over
+		for (int k = 0; k < 500; k++){ //brute force it a lot of times until Game Over
 			for (source = 0; source < 16; source++) {  //try all 16 columns as destination
 				for(dest = 0; dest <16; dest++){ // try all 16 columns as source
 					if (b.getColumn(source).isEmpty()){continue;} //don't try move if source is empty
 					if (source == dest) {continue;}   //don't try move if source and destination are same;
 					/*
 					 * Reached special case where only cards in Cells are left (not on foundations).
-					 * If source is a Cell AND Cascades are empty, loop only through foundations to finish off.
+					 * If source is a Cell AND Cascades are empty, then Foundations are only valid destinations.
+					 * Loop through foundations as destination to finish off.
 					 */
 					if (b.isMoveLegal(source, dest) && source < 4 && b.isCascadesEmpty()){
 						for (int i = 4; i < 8; i++) {
@@ -90,8 +91,9 @@ public class Solver {
 	
 	public static void main(String[] args) {
 		Deck deck = new Deck();
-		GameBoard board = new GameBoard(deck);
-		bruteForceSolve(board);
+		GameBoard testboard = new GameBoard(deck); //test deck
+		GameBoard boardfull = new GameBoard(); //real random deck
+		bruteForceSolve(testboard);
 
 	}
 
