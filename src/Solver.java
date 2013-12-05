@@ -41,14 +41,27 @@ public class Solver {
 	
 	
 	public static void bruteForceSolve(GameBoard b){
+		boolean gameover = false;
 		System.out.println(b);
 		int source=0;
 		int dest=0;
 		for (int k = 0; k < 1000; k++){ //brute force it a lot of times until Game Over
 			for (source = 0; source < 16; source++) {  //try all 16 columns as destination
 				for(dest = 0; dest <16; dest++){ // try all 16 columns as source
-					if (b.getColumn(source).isEmpty() && ! b.isCascadesEmpty()){continue;}
-					if (source == dest) {continue;}   //don't test if source and destination are same;
+					if (b.getColumn(source).isEmpty()){continue;} //don't try move if source is empty
+					if (source == dest) {continue;}   //don't try move if source and destination are same;
+					/*
+					 * Reached special case where only cards in Cells are left (not on foundations).
+					 * If source is a Cell AND Cascades are empty, loop only through foundations to finish off.
+					 */
+					if (b.isMoveLegal(source, dest) && source < 4 && b.isCascadesEmpty()){
+						for (int i = 4; i < 8; i++) {
+							if(b.isMoveLegal(source,i)){
+								b = new GameBoard(source, i, b);
+								System.out.println(b);
+							}
+						}
+					}
 					if (b.isMoveLegal(source, dest)){
 						b = new GameBoard(source, dest, b);
 						System.out.println(b);
@@ -59,9 +72,14 @@ public class Solver {
 				if(b.isGameOver()){
 				System.out.println(b);
 				System.out.println("Game Over");
+				gameover = true;
 				break;
 				}	
 			}
+		if(gameover){
+			System.out.println("Thanks for playing.");
+			break;
+		}
 		}
 	}
 	
