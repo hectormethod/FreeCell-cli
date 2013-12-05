@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class Solver {
 	
+	private static boolean VERBOSE=true;
+	private static boolean SOLUTION_FOUND=false;
 	public Solver(){
 		
 	}
@@ -59,15 +61,15 @@ public class Solver {
 						for (int i = 4; i < 8; i++) {
 							if(b.isMoveLegal(source,i)){
 								b = new GameBoard(source, i, b);
-								System.out.println(b);
+								if(VERBOSE){System.out.println(b);}
 							}
 						}
 					}
 					if (b.isMoveLegal(source, dest)){
 						b = new GameBoard(source, dest, b);
-						System.out.println(b);
+						if(VERBOSE){System.out.println(b);}
 						break;
-					} else {System.out.println(source + ", "+ dest + " is Invalid Move");}
+					} else if(VERBOSE) {System.out.println(source + ", "+ dest + " is Invalid Move");}
 			
 			}	
 				if(b.isGameOver()){
@@ -79,6 +81,7 @@ public class Solver {
 			}
 		if(gameover){
 			System.out.println("Thanks for playing.");
+			SOLUTION_FOUND = true;
 			break;
 		}
 		}
@@ -91,10 +94,14 @@ public class Solver {
 	
 	public static void main(String[] args) {
 		Deck deck = new Deck();
+		int attempts = 10000;
 		GameBoard testboard = new GameBoard(deck); //test deck
-		GameBoard boardfull = new GameBoard(); //real random deck
-		bruteForceSolve(testboard);
-
+		VERBOSE=false;
+		for (int i = 0; i < attempts; i++) {
+			GameBoard fullboard = new GameBoard(); //real random deck
+			bruteForceSolve(fullboard);
+			if(SOLUTION_FOUND){break;}
+		}
 	}
 
 }
