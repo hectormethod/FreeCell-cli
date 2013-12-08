@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+/*
+ *  Break up solution -- put all POSSIBLE, legal moves for given board state in a list. 
+ *  Then, iterate through and weight or rank each move in the list.
+ */
 public class Solver {
 	
 	private static boolean VERBOSE=true;
@@ -84,13 +87,14 @@ public class Solver {
 					} else {
 						if(VERBOSE) {System.out.println(source + ", "+ dest + " is Invalid Move");}
 						}
-				}start = 0; 		//start over and try cells now.	
+				} 			
 				if(b.isGameOver()){
 				System.out.println(b);
 				System.out.println("Game Over");
 				gameover = true;
 				break;
 				}
+			start = 0;//start over and try cells now.
 			}
 		if(gameover){
 			System.out.println("Thanks for playing.");
